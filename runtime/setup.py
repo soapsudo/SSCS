@@ -1,6 +1,7 @@
-import subprocess
+from dependencies import *
 
 class Setup:
     
     def run(self):
-        subprocess.run(["/scripts/initial.sh"])
+        os.system("sudo chmod a+x /scripts")
+        os.system("./scripts/initial.sh")
