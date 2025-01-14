@@ -8,15 +8,16 @@ class Main:
         self.startContainer = Start
         self.stopContainer = Stop
         self.deleteContainer = Delete
+        self.utils = Utility
        
    
     def start(self, alreadyRun):
         
-        self.clearTerminal()
+        self.utils.clearTerminal(Utility())
         
         if alreadyRun == False:
             self.setup.run(Setup())
-            self.clearTerminal()
+            self.utils.clearTerminal(Utility())
         
         print("||================SSCS================||")
         print("||Choose one of the following options:||")
@@ -30,7 +31,10 @@ class Main:
         
         chosenOption = input()
         
-        if self.checkInput(chosenOption):
+        if self.utils.inputCheck(Utility(), chosenOption, 1, 6):
+            
+            chosenOption = int(chosenOption)
+            
             if chosenOption == 1:
                 self.make.run(Make())
             elif chosenOption == 2:
@@ -48,22 +52,7 @@ class Main:
             print(f"{bcolors.WARNING}Invalid input. Please choose one of the available options.{bcolors.ENDC}")
             time.sleep(2)
             self.start(False)
-    
-    
-    def clearTerminal(self):
-        command = "cls" if platform.system() == "Windows" else "clear"
-        subprocess.run(command, shell = True)
-        
-        
-    def checkInput(self, input):
-        lowerBound = 1;
-        upperBound = 6;
-        
-        if input.isnumeric():
-            return int(input) >= lowerBound and int(input) <= upperBound
-            
-        return False    
-        
-    
+
+
 main = Main()
 main.start(False)
