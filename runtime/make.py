@@ -14,5 +14,5 @@ class Make:
         while self.utils.portCheck(portNumber) == False:
             portNumber = input(f"{bcolors.FAIL}Invalid input. Please choose one of the available ports.{bcolors.ENDC}")        
         
-        self.utils.executeBash(Utility(), ["./scripts/make.sh", containerName, "port"])
+        self.utils.executeBash(["./make.sh", containerName, portNumber])
         
