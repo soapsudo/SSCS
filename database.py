@@ -13,10 +13,19 @@ class Database:
         return cursor
     
     def runQuery(self, query):
+        
+        returnArray = []
+        
         cursor = self.makeConnection()
         cursor.execute(query)
         
-        return cursor.fetchall()
+        result = cursor.fetchall()
+        cursor.close()
+        
+        for element in result:
+            returnArray += element
+            
+        return returnArray
         
     def setup(self):
         
@@ -48,4 +57,6 @@ class Database:
                 );
             """
               
-        cursor.executescript(setupQuery)      
+        cursor.executescript(setupQuery)
+        cursor.close()
+        
