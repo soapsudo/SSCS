@@ -1,7 +1,7 @@
 from dependencies import *
 
 class Database:
-    
+ 
     def makeConnection(self):
         try:
             sqliteConnection = sqlite3.connect('database/records.db')
@@ -40,6 +40,7 @@ class Database:
             CREATE TABLE IF NOT EXISTS container (
                 container_id INTEGER PRIMARY KEY,
                 name VARCHAR,
+                local_port VARCHAR,
                 type_id INTEGER,
                 FOREIGN KEY (type_id) REFERENCES type (type_id)
             );
