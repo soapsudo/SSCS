@@ -4,14 +4,14 @@ class Main:
    
     def __init__(self):
         self.setup = Setup()
+        self.utils = Utility()
         self.make = Make()
         self.startContainer = Start()
         self.stopContainer = Stop()
         self.deleteContainer = Delete()
-        self.utils = Utility()
        
    
-    def start(self, alreadyRun):
+    def start(self, alreadyRun = True):
         
         self.utils.clearTerminal()
         
@@ -27,6 +27,7 @@ class Main:
         print("||4. Stop all containers==============||")
         print("||5. Stop a single container==========||")
         print("||6. Delete a container===============||")
+        print("||7. Exit=============================||")
         print("||===============>>><<<===============||")
         
         chosenOption = input()
@@ -47,12 +48,15 @@ class Main:
                 self.stopContainer.run(2)
             elif chosenOption == 6:
                 self.deleteContainer.run()
-                
+            elif chosenOption == 7:
+                return    
         else:
             print(f"{bcolors.WARNING}Invalid input. Please choose one of the available options.{bcolors.ENDC}")
             time.sleep(2)
             self.start(False)
 
-
-main = Main()
-main.start(False)
+def startMenu(alreadyRun):
+    main = Main()
+    main.start(alreadyRun)
+    
+startMenu(False)    

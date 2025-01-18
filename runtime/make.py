@@ -5,7 +5,7 @@ class Make:
     
     def __init__ (self):
         self.utils = Utility()
-        self.database = Database()    
+        self.database = Database()
     
     def run(self):
         self.utils.clearTerminal()
@@ -18,8 +18,7 @@ class Make:
         
         self.insertContainerRecord(containerType, containerName, portNumber)
         
-        #self.main.start(False)
-                
+                           
     def portChoice(self):
         portNumber = input("Input a port to use on your host machine (9000-9999): ")
                 
@@ -47,7 +46,7 @@ class Make:
                
            containerName = naming[0] + str(int(naming[1] + 1))
         
-        while(self.utils.containerNameCheck(containerName)):
+        while(self.utils.containerNameCheck(containerName) == False):
             containerName = input(f"{bcolors.FAIL}You have already made a container with that name, pick another:{bcolors.ENDC}")
         
                                       
@@ -74,5 +73,5 @@ class Make:
     def insertContainerRecord(self, containerType, containerName, portNumber):
         self.database.runQuery(f"""
                                 INSERT INTO container (name, local_port, type_id) 
-                                VALUES ({containerName}, {portNumber}, {containerType})
+                                VALUES ('{containerName}', '{portNumber}', '{containerType}')
                                 """)

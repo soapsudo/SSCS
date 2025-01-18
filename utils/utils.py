@@ -21,8 +21,8 @@ class Utility:
         check1 = portNumber.isnumeric() and int(portNumber) >= 9000 and int(portNumber) <= 9999
         check2 = False
         
-        if check1:
-            check2 = self.database.runQuery(f"SELECT container_id FROM container WHERE port_number = {portNumber}")
+        if check1 == True:
+            check2 = self.database.runQuery(f"SELECT container_id FROM container WHERE local_port = '{portNumber}'")
             
             if not check2:
                 check2 = True
@@ -35,7 +35,7 @@ class Utility:
     
     
     def containerNameCheck(self, containerName):
-        result = self.database.runQuery(f"SELECT name FROM container WHERE name = {containerName}")
+        result = self.database.runQuery(f"SELECT name FROM container WHERE name = '{containerName}'")
         
         if not result:
             return True

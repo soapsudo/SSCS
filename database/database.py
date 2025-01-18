@@ -18,6 +18,7 @@ class Database:
         
         cursor = self.makeConnection()
         cursor.execute(query)
+        cursor.connection.commit()
         
         result = cursor.fetchall()
         cursor.close()
