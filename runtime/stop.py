@@ -3,6 +3,9 @@ from dependencies import *
 
 class Stop:
     
+    def __init__(self, callback):
+        self.restartMenu = callback
+    
     def run(self, option):
         if option == 1:
             self.stopOneContainer()

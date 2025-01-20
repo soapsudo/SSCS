@@ -5,12 +5,11 @@ class Main:
     def __init__(self):
         self.setup = Setup()
         self.utils = Utility()
-        self.make = Make()
-        self.startContainer = Start()
-        self.stopContainer = Stop()
-        self.deleteContainer = Delete()
-       
-   
+        self.make = Make(self.start)
+        self.startContainer = Start(self.start)
+        self.stopContainer = Stop(self.start)
+        self.deleteContainer = Delete(self.start)
+    
     def start(self, alreadyRun = True):
         
         self.utils.clearTerminal()

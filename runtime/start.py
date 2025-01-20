@@ -2,6 +2,9 @@ from dependencies import *
 
 class Start:
     
+    def __init__(self, callback):
+        self.restartMenu = callback
+    
     def run(self, option):
         if option == 1:
             self.runOneContainer()

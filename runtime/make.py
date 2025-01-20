@@ -1,11 +1,11 @@
 from dependencies import *
 
-
 class Make:
     
-    def __init__ (self):
+    def __init__ (self, callback):
         self.utils = Utility()
         self.database = Database()
+        self.restartMenu = callback
     
     def run(self):
         self.utils.clearTerminal()
@@ -17,7 +17,7 @@ class Make:
         #self.utils.executeBash(["./make.sh", containerName, portNumber])
         
         self.insertContainerRecord(containerType, containerName, portNumber)
-        
+        self.restartMenu()        
                            
     def portChoice(self):
         portNumber = input("Input a port to use on your host machine (9000-9999): ")
