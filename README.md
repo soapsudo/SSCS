@@ -11,7 +11,7 @@
 - Managing multiple app stacks on a single host
 
 ## Installation
-- Make sure you have `python3` and `sqlite3` installed on your system.
+- Make sure you have `docker`, `python3` and `sqlite3` installed on your system.
 - Clone this repository to your local machine.
 - Run the main.py file inside the directory where you cloned the repository.
 - You're good to go!
