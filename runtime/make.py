@@ -14,10 +14,11 @@ class Make:
         containerName = self.containerNaming(containerType)
         portNumber = self.portChoice()
                 
-        #self.utils.executeBash(["./make.sh", containerName, portNumber])
+        self.utils.executeBash(["./make.sh", containerType, containerName])
         
         self.insertContainerRecord(containerType, containerName, portNumber)
         self.restartMenu()        
+                           
                            
     def portChoice(self):
         portNumber = input("Input a port to use on your host machine (9000-9999): ")
@@ -69,6 +70,7 @@ class Make:
             containerChoice = input(f"{bcolors.FAIL}Invalid input. Please choose one of the available options.{bcolors.ENDC}")
         
         return containerChoice
+    
     
     def insertContainerRecord(self, containerType, containerName, portNumber):
         self.database.runQuery(f"""

@@ -5,6 +5,7 @@ class Utility:
     def __init__(self):
         self.database = Database()
     
+    
     def inputCheck(self, input, lowerBound, upperBound):    
         if input.isnumeric():
             return int(input) >= lowerBound and int(input) <= upperBound

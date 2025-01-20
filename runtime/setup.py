@@ -6,6 +6,7 @@ class Setup:
         self.utils = Utility()
         self.database = Database()
     
+    
     def run(self):        
 
         self.database.setup()
