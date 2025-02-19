@@ -31,26 +31,14 @@ class Make:
     
     def containerNaming(self, containerType):
         
-        containerName = input("Name your container (leave empty for default): ")
+        containerName = input("Name your container: ")
         
-        if containerName == "":
-           naming = self.database.runQuery(f"""
-                                        SELECT type.name, container_id FROM type
-                                        LEFT JOIN container ON type.type_id = container.type_id
-                                        WHERE type.type_id = {containerType}
-                                        GROUP BY type.name, container.container_id
-                                        ORDER BY container.container_id DESC
-                                        LIMIT 1
-                                       """)
-           if naming[1] == None: 
-               naming[1] = 0
-               
-           containerName = naming[0] + str(int(naming[1] + 1))
-        
+        while(containerName.strip() == ""):
+            containerName = input(f"{bcolors.FAIL}Invalid input. Please name your container.{bcolors.ENDC}")
+                       
         while(self.utils.containerNameCheck(containerName) == False):
             containerName = input(f"{bcolors.FAIL}You have already made a container with that name, pick another:{bcolors.ENDC}")
         
-                                      
         return containerName
     
     
@@ -68,8 +56,10 @@ class Make:
         
         while self.utils.inputCheck(containerChoice, 1, enum) == False:
             containerChoice = input(f"{bcolors.FAIL}Invalid input. Please choose one of the available options.{bcolors.ENDC}")
+            
+        containerChoice = self.database.runQuery(f"SELECT name FROM type WHERE type_id = '{int(containerChoice)}'")[0]    
         
-        return containerChoice
+        return str(containerChoice)
     
     
     def insertContainerRecord(self, containerType, containerName, portNumber):

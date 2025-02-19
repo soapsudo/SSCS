@@ -48,7 +48,7 @@ class Main:
             elif chosenOption == 6:
                 self.deleteContainer.run()
             elif chosenOption == 7:
-                return    
+                exit()    
         else:
             print(f"{bcolors.WARNING}Invalid input. Please choose one of the available options.{bcolors.ENDC}")
             time.sleep(2)

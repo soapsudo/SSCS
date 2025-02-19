@@ -5,12 +5,18 @@
 
 cd ..
 
-sudo mkdir $1
+sudo mkdir $2
 
-cd $1
+cd $2
 
-touch Dockerfile
+sudo touch Dockerfile
 
+sudo chmod 777 Dockerfile
 
+cd ..
 
-docker build -t $1:1.0 .
+sudo cat images/$1.txt > $2/Dockerfile
+
+cd $2
+
+sudo docker build -t $2 .
