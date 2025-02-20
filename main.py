@@ -31,16 +31,16 @@ class Main:
         
         chosenOption = input()
         
-        if self.utils.inputCheck(chosenOption, 1, 6):
+        if self.utils.inputCheck(chosenOption, 1, 7):
             
             chosenOption = int(chosenOption)
             
             if chosenOption == 1:
                 self.make.run()
             elif chosenOption == 2:
-                self.startContainer.run(1)
-            elif chosenOption == 3:
                 self.startContainer.run(2)
+            elif chosenOption == 3:
+                self.startContainer.run(1)
             elif chosenOption == 4: 
                 self.stopContainer.run(1)
             elif chosenOption == 5:

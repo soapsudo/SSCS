@@ -1,4 +1,4 @@
-# SSCS (Single-host Simple Container Setup) - undergoing development
+# SSCS (Single-host Simple Container Setup)
 
 ## Introduction
 - This project is a simple container setup for a single host. It's primary use case is setting up multiple app stacks/webservers on one host. 
